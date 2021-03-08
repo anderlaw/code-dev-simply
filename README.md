@@ -1,2 +1,2 @@
 # code-dev-simply
-A Toll helps you make web App more quick and effective
+A project & Tool helps you make web App more quick and effective
