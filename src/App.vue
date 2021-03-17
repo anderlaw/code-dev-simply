@@ -2,15 +2,17 @@
 <Canvas/>
 </template>
 
-<script>
+<script lang="ts">
+import alertStr from './tool/log'
 import beautify from './tool/beautify'
-import Canvas from './components/canvas'
+import Canvas from './components/canvas/index.vue'
 export default {
   name: 'App',
   components: {
     Canvas
   },
   mounted(){
+    alertStr("123");
     const html = beautify.html(`
     <div>
     哈哈哈哈
@@ -22,10 +24,9 @@ export default {
       h1{
         color:green;
       }
-    }
-    `
+    }`;
     console.log(html);
-    beautify.css(scss,css=>{
+    beautify.css(scss,(css: any)=>{
       console.log(css);
     })
   }
@@ -33,12 +34,4 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

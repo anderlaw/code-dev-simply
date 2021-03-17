@@ -1,25 +1,25 @@
 <template>
-  <input type="file" class="design-input" />
-  <div class="icon-box">
-    <span class="plus iconfont icon-z"></span>
-    <span class="minus iconfont icon-suoxiao2"></span>
-    <span class="measure iconfont icon-celiang1"></span>
-    <span class="select iconfont icon-icon_common_region"></span>
-  </div>
-
-  <div class="design-view">
-    <img class="design-img" alt="" />
-    <div class="measure-box">
-      <div class="line show-h-length">
-        <div class="length-value"></div>
-      </div>
-      <div class="handle-bar"></div>
+  <div class="container" style="margin:10px;">
+    <input type="file" class="design-input" />
+    <div class="icon-box">
+      <span class="plus iconfont icon-z"></span>
+      <span class="minus iconfont icon-suoxiao2"></span>
+      <span class="measure iconfont icon-celiang1"></span>
+      <span class="select iconfont icon-icon_common_region"></span>
     </div>
-    <div class="select-base">
-      <!-- 按下拖拉选区、改变大小、改变位置 -->
-      <div class="select-box">
-        <!-- 悬浮框展示剪切框大小 -->
-        <!-- <div class="tooltip-box">
+    <div class="design-view">
+      <img class="design-img" alt="" />
+      <div class="measure-box">
+        <div class="line show-h-length">
+          <div class="length-value"></div>
+        </div>
+        <div class="handle-bar"></div>
+      </div>
+      <div class="select-base">
+        <!-- 按下拖拉选区、改变大小、改变位置 -->
+        <div class="select-box">
+          <!-- 悬浮框展示剪切框大小 -->
+          <!-- <div class="tooltip-box">
             <div>
               <span class="key">W</span>
               <span>:</span>
@@ -31,27 +31,28 @@
               <span class="value_H">131.40</span> PX
             </div>
           </div> -->
-        <!-- 填充盒子，撑起框的样式 -->
-        <div class="frame-box">
-          <div class="horizontal"></div>
-          <div class="vertical"></div>
-        </div>
+          <!-- 填充盒子，撑起框的样式 -->
+          <div class="frame-box">
+            <div class="horizontal"></div>
+            <div class="vertical"></div>
+          </div>
 
-        <!-- 线上的四个中位点 -->
-        <div class="dot-box">
-          <div class="dot left"></div>
-          <div class="dot right"></div>
-          <div class="dot top"></div>
-          <div class="dot bottom"></div>
-        </div>
+          <!-- 线上的四个中位点 -->
+          <div class="dot-box">
+            <div class="dot left"></div>
+            <div class="dot right"></div>
+            <div class="dot top"></div>
+            <div class="dot bottom"></div>
+          </div>
 
-        <!-- 覆盖技术:遮盖住前面所有的同级元素，可忽略其他兄弟元素的事件... -->
-        <!-- 操作句柄 盒子-->
-        <div class="handle-box">
-          <div class="resize_line_left"></div>
-          <div class="resize_line_right"></div>
-          <div class="resize_line_top"></div>
-          <div class="resize_line_bottom"></div>
+          <!-- 覆盖技术:遮盖住前面所有的同级元素，可忽略其他兄弟元素的事件... -->
+          <!-- 操作句柄 盒子-->
+          <div class="handle-box">
+            <div class="resize_line_left"></div>
+            <div class="resize_line_right"></div>
+            <div class="resize_line_top"></div>
+            <div class="resize_line_bottom"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -61,6 +62,11 @@
 <script>
 //这是画板组件。
 export default {
+  data(){
+    return {
+      handleType:""
+    }
+  },
   mounted() {
     //以默认尺寸渲染设计图
     const currentSize = [375, 667];
