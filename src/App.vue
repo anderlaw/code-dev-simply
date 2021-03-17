@@ -1,15 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<Canvas/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import beautify from './tool/beautify'
+import Canvas from './components/canvas'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Canvas
+  },
+  mounted(){
+    const html = beautify.html(`
+    <div>
+    哈哈哈哈
+      </div>
+    `)
+    const scss = `
+    body{
+      color:red;
+      h1{
+        color:green;
+      }
+    }
+    `
+    console.log(html);
+    beautify.css(scss,css=>{
+      console.log(css);
+    })
   }
 }
 </script>
