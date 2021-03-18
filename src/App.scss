@@ -1,0 +1,43 @@
+#app{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* display: flex;
+  justify-content: space-between; */
+  background-color: #f5f6fa;
+  .header{
+    height: 48px;
+    background-color: #fff;
+    box-shadow: rgba(0 ,0, 0, .10) 0px 0px 5px 0px;
+  }
+  .container{
+    height: calc(100% - 48px);
+    display: flex;
+    border-top: 1px solid #c4c6cf;
+    .tree-container{
+      width: 240px;
+      height: 100%;
+      border-right: 1px solid #c4c6cf;
+      border-bottom: 1px solid #c4c6cf;
+    }
+    .view-container{
+      flex: 1;
+      height: 100%;
+      background-color: #f7f7f7;
+      padding: 10px;
+      .content-box{
+        background-color: #fff;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .prop-container{
+      width: 300px;
+      height: 100%;
+      background-color: #f7f7f7;
+      border-left: 1px solid #d8d8d8;
+    }
+  }
+}
