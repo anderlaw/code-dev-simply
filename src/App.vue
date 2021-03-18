@@ -1,37 +1,54 @@
 <template>
-<Canvas/>
+  <div style="width:240px;height:800px;background:red;"></div>
+  <Canvas style="width:600px;height:800px;background:green;"/>
+  <Preview style="width:600px;height:800px;background:pink;" :htmlStr="htmlString" :cssString="cssString"></Preview>
+  <div style="width:300px;height:800px;background:orange;"></div>
+
 </template>
 
-<script lang="ts">
-import alertStr from './tool/log'
-import beautify from './tool/beautify'
-import Canvas from './components/canvas/index.vue'
+<script>
+import beautify from "./tool/beautify.js";
+import Canvas from "./components/canvas/index.vue";
+import Preview from "./components/Preview.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Canvas
+    Canvas,
+    Preview,
   },
-  mounted(){
-    alertStr("123");
-    const html = beautify.html(`
+  data() {
+    return {
+      htmlString: "",
+      cssString: "",
+    };
+  },
+  mounted() {
+    this.htmlString = beautify.html(`
     <div>
     哈哈哈哈
       </div>
-    `)
-    const scss = `
+    `);
+
+    beautify.css(
+      `
     body{
       color:red;
       h1{
         color:green;
       }
-    }`;
-    console.log(html);
-    beautify.css(scss,(css: any)=>{
-      console.log(css);
-    })
-  }
-}
+    }`,
+      (css) => {
+            this.cssString = css;
+      },
+    );
+  },
+};
 </script>
 
 <style>
+#app{
+  display: flex;
+  justify-content: space-between;
+}
+
 </style>
