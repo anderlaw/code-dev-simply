@@ -14,6 +14,65 @@
   background-color: #fff;
   -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px;
           box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 20px;
+}
+
+#app .header .logo {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#app .header .icon-box {
+  margin-right: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#app .header .icon-box .icon-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 7px;
+  cursor: pointer;
+  color: #666;
+  margin: 0 10px;
+}
+
+#app .header .icon-box .icon-item.active {
+  color: #fff;
+  background-color: #2d88f8;
+}
+
+#app .header .icon-box .icon-item .iconfont {
+  font-size: 22px;
+}
+
+#app .header .icon-box .icon-item .icontext {
+  font-size: 12px;
 }
 
 #app .container {
@@ -38,12 +97,65 @@
   height: 100%;
   background-color: #f7f7f7;
   padding: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#app .container .view-container .no-img-tip {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 30px;
+  height: 30px;
 }
 
 #app .container .view-container .content-box {
-  background-color: #fff;
+  width: 100%;
+  height: calc(100% - 30px);
+}
+
+#app .container .view-container .content-box .design-container {
   width: 100%;
   height: 100%;
+}
+
+#app .container .view-container .content-box .preview-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #333;
+  background-color: #ccc;
+}
+
+#app .container .view-container .content-box .preview-container .resizable-handle {
+  position: absolute;
+}
+
+#app .container .view-container .content-box .preview-container .resizable-handle.resizable-n {
+  width: 100%;
+  height: 7px;
+  top: -4px;
+  cursor: n-resize;
+}
+
+#app .container .view-container .content-box .preview-container .resizable-handle.resizable-s {
+  width: 100%;
+  height: 7px;
+  bottom: -4px;
+  cursor: n-resize;
+}
+
+#app .container .view-container .content-box .preview-container .resizable-handle.resizable-e {
+  width: 7px;
+  height: 100%;
+  right: -4px;
+  cursor: e-resize;
+}
+
+#app .container .view-container .content-box .preview-container .resizable-handle.resizable-w {
+  width: 7px;
+  height: 100%;
+  left: -4px;
+  cursor: w-resize;
 }
 
 #app .container .prop-container {

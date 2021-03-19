@@ -65,7 +65,7 @@
 
 <script>
 //这是画板组件。
-
+//维持自己的状态，选区完成后输出图片二进制、位置数据给上层组件
 export default {
   data() {
     return {
