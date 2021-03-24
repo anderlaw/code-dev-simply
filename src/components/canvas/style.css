@@ -9,6 +9,10 @@ body {
 
 .design-view img {
   width: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .design-view .measure-container {
@@ -184,7 +188,7 @@ body {
   cursor: ew-resize;
 }
 
-.iconfont {
+.canvas.container .iconfont {
   font-size: 24px;
   padding: 4px 6px;
   cursor: pointer;
@@ -193,7 +197,7 @@ body {
   margin-right: 8px;
 }
 
-.iconfont:hover, .iconfont.active {
+.canvas.container .iconfont:hover, .canvas.container .iconfont.active {
   color: #fff;
   background-color: #409eff;
 }

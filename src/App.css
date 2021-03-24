@@ -31,7 +31,7 @@
   font-weight: bold;
 }
 
-#app .header .icon-box {
+#app .header .icon-btn_container {
   margin-right: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -41,7 +41,7 @@
           align-items: center;
 }
 
-#app .header .icon-box .icon-item {
+#app .header .icon-btn_container .icon-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,20 +62,20 @@
   margin: 0 10px;
 }
 
-#app .header .icon-box .icon-item.active {
+#app .header .icon-btn_container .icon-item.active {
   color: #fff;
   background-color: #2d88f8;
 }
 
-#app .header .icon-box .icon-item .iconfont {
+#app .header .icon-btn_container .icon-item .iconfont {
   font-size: 22px;
 }
 
-#app .header .icon-box .icon-item .icontext {
+#app .header .icon-btn_container .icon-item .icontext {
   font-size: 12px;
 }
 
-#app .container {
+#app > .container {
   height: calc(100% - 48px);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -83,14 +83,74 @@
   border-top: 1px solid #c4c6cf;
 }
 
-#app .container .tree-container {
-  width: 240px;
+#app > .container .tree-container {
+  width: 288px;
   height: 100%;
   border-right: 1px solid #c4c6cf;
   border-bottom: 1px solid #c4c6cf;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
-#app .container .view-container {
+#app > .container .tree-container .left-bar {
+  width: 48px;
+  background-color: #ececec;
+}
+
+#app > .container .tree-container .left-bar .icon-item {
+  text-align: center;
+  cursor: pointer;
+  padding: 6px 0;
+  margin: 8px 0;
+  position: relative;
+}
+
+#app > .container .tree-container .left-bar .icon-item:hover {
+  color: #4081ff;
+}
+
+#app > .container .tree-container .left-bar .icon-item:hover::before {
+  content: attr(data-tooltip);
+  display: block;
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  line-height: 18px;
+  font-size: 12px;
+  white-space: nowrap;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  z-index: 100;
+}
+
+#app > .container .tree-container .left-bar .icon-item:hover::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: rgba(0, 0, 0, 0.75);
+  z-index: 100;
+}
+
+#app > .container .tree-container .left-bar .icon-item .iconfont {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+}
+
+#app > .container .view-container {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -101,24 +161,24 @@
           box-sizing: border-box;
 }
 
-#app .container .view-container .no-img-tip {
+#app > .container .view-container .no-img-tip {
   font-size: 18px;
   font-weight: bold;
   line-height: 30px;
   height: 30px;
 }
 
-#app .container .view-container .content-box {
+#app > .container .view-container .content-box {
   width: 100%;
   height: calc(100% - 30px);
 }
 
-#app .container .view-container .content-box .design-container {
+#app > .container .view-container .content-box .design-container {
   width: 100%;
   height: 100%;
 }
 
-#app .container .view-container .content-box .preview-container {
+#app > .container .view-container .content-box .preview-container {
   position: relative;
   width: 100%;
   height: 100%;
@@ -126,42 +186,46 @@
   background-color: #ccc;
 }
 
-#app .container .view-container .content-box .preview-container .resizable-handle {
+#app > .container .view-container .content-box .preview-container .resizable-handle {
   position: absolute;
 }
 
-#app .container .view-container .content-box .preview-container .resizable-handle.resizable-n {
+#app > .container .view-container .content-box .preview-container .resizable-handle.resizable-n {
   width: 100%;
   height: 7px;
   top: -4px;
   cursor: n-resize;
 }
 
-#app .container .view-container .content-box .preview-container .resizable-handle.resizable-s {
+#app > .container .view-container .content-box .preview-container .resizable-handle.resizable-s {
   width: 100%;
   height: 7px;
   bottom: -4px;
   cursor: n-resize;
 }
 
-#app .container .view-container .content-box .preview-container .resizable-handle.resizable-e {
+#app > .container .view-container .content-box .preview-container .resizable-handle.resizable-e {
   width: 7px;
   height: 100%;
   right: -4px;
   cursor: e-resize;
 }
 
-#app .container .view-container .content-box .preview-container .resizable-handle.resizable-w {
+#app > .container .view-container .content-box .preview-container .resizable-handle.resizable-w {
   width: 7px;
   height: 100%;
   left: -4px;
   cursor: w-resize;
 }
 
-#app .container .prop-container {
+#app > .container .prop-container {
   width: 300px;
   height: 100%;
   background-color: #f7f7f7;
   border-left: 1px solid #d8d8d8;
+}
+
+.node-desc {
+  white-space: nowrap;
 }
 /*# sourceMappingURL=App.css.map */

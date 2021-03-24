@@ -1,12 +1,11 @@
 <template>
-  <div class="container" style="margin:10px;">
+  <div class="canvas container" style="margin:10px;">
     <input type="file" class="design-input" />
-    <div class="icon-box">
+    <div class="icon-btn_container btn-box">
       <span class="size-plus iconfont icon-z"></span>
       <span class="size-minus iconfont icon-suoxiao2"></span>
       <span :class="handleType === 'Measure'?'active':''" class="measure iconfont icon-celiang1"></span>
       <span :class="handleType === 'Select'?'active':''" class="select iconfont icon-icon_common_region"></span>
-      <span class="iconfont" @click="cropPicture">OK</span>
     </div>
     <div
       class="design-view"
@@ -77,7 +76,7 @@ export default {
       ratioRuler: 0,
       //Measure|Select
       handleType: "",
-      //outputBs64
+      outputBs64:""
       
     };
   },
@@ -85,9 +84,9 @@ export default {
     //初始化测量和选区的事件
     initMeasureAndSelectEvent() {
       //测量操作
-      const measureBar = document.querySelector(".measure-container .handle-bar");
-      const measureLine = document.querySelector(".measure-container > .line");
-      const measureValue = document.querySelector(".measure-container .length-value");
+      const measureBar = this.$el.querySelector(".measure-container .handle-bar");
+      const measureLine = this.$el.querySelector(".measure-container > .line");
+      const measureValue = this.$el.querySelector(".measure-container .length-value");
       measureBar.onmousedown = (e) => {
         const startPos = [e.offsetX, e.offsetY];
         measureBar.onmousemove = (e) => {
@@ -129,9 +128,9 @@ export default {
       };
   
       //选区操作
-      const selectBase = document.querySelector(".select-container");
-      const selectBox = document.querySelector(".select-container .select-box");
-      const handleBox = document.querySelector(".select-container .handle-box");
+      const selectBase = this.$el.querySelector(".select-container");
+      const selectBox = this.$el.querySelector(".select-container .select-box");
+      const handleBox = this.$el.querySelector(".select-container .handle-box");
       selectBase.onmousedown = (outerE) => {
         const startPos = [outerE.offsetX, outerE.offsetY];
         if (!outerE.target.classList.contains("select-container")) return;
@@ -148,6 +147,7 @@ export default {
       };
       selectBase.onmouseup = () => {
         selectBase.onmousemove = null;
+        this.cropPicture();
       };
       //改变位置、大小
       handleBox.onmousedown = (outerE) => {
@@ -208,12 +208,13 @@ export default {
       };
       selectBase.onmouseup = () => {
         selectBase.onmousemove = null;
+        this.cropPicture();
       };
     },
     cropPicture(){
       //剪切图片
       //计算剪切框的位置和大小
-      const style = getComputedStyle(document.querySelector('.select-box'));
+      const style = getComputedStyle(this.$el.querySelector('.select-box'));
       const left = parseFloat(style.left)/this.ratioRuler;
       const top = parseFloat(style.top)/this.ratioRuler;
       const width = parseFloat(style.width)/this.ratioRuler;
@@ -224,16 +225,21 @@ export default {
       canvas.width = width;
       canvas.height = height;
       context.drawImage(this.imgRef,left, top,width, height, 0, 0, width, height);
-      var bs64 = canvas.toDataURL("image/jpeg");
-      console.log(bs64);
+      var bs64 = canvas.toDataURL("image/jpeg",1);
+      this.outputBs64 = bs64;
+      this.$emit("bs65Made",{
+        bs64,
+        width:width/(this.imgSize.width/10).toFixed(2) + 'rem',
+        height:height/(this.imgSize.width/10).toFixed(2) + 'rem'
+      })
     }
   },
   mounted() {
     //记录图片元素引用
-    this.imgRef = document.querySelector(".design-img");
+    this.imgRef = this.$el.querySelector(".design-img");
 
     //图稿插入事件
-    document.querySelector(".design-input").addEventListener("change", (e) => {
+    this.$el.querySelector(".design-input").addEventListener("change", (e) => {
       const file = e.target.files[0];
       const fileReader = new FileReader();
       fileReader.onload = (e) => {
@@ -251,7 +257,7 @@ export default {
     });
 
     //操作栏点击事件
-    document.querySelector(".icon-box").addEventListener("click", (e) => {
+    this.$el.querySelector(".icon-btn_container").addEventListener("click", (e) => {
       const targte = e.target;
       if (!targte.classList.contains("iconfont")) return; 
       //改变尺寸
